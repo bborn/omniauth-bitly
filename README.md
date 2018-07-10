@@ -59,8 +59,11 @@ def auth_hash
   request.env['omniauth.auth']
 end
 ```
-## NOTES
+## FORK NOTES
 
 This is actually a fork of judearasu's `omniauth-bitly` strategy, but Github wouldn't let me fork it - kept 
 giving me a 404 Page Not Found.  Credit goes to him and elrosa for their work.  I only added the hack to 
 add the `state` parameter that, as of this writing, Bitly does not support.
+
+This was further updated to work with Rails 5.1 using version 1.5 of
+`omniauth-oauth2`.

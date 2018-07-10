@@ -42,6 +42,14 @@ module OmniAuth
         request.params["state"] = session["omniauth.state"] unless request.params["state"]
         super
       end
+
+      # Having the code included in the redirect_url when fetching the token
+      # causes INVALID_CODE errors from Bitly.
+      # see https://github.com/omniauth/omniauth-oauth2/issues/93
+      # and https://github.com/isaacsanders/omniauth-stripe-connect/pull/49
+      def callback_url
+        full_host + script_name + callback_path
+      end
     end
   end
 end
